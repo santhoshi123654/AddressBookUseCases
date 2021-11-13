@@ -1,88 +1,97 @@
 package com.bridgelabzs;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Scanner;
 
 public class Contact {
 	
-	public static void main(String[] args) {
+	private String firstName;
+	private String lastName;
+	private String address;
+	private String cityName;
+	private String stateName;
+	private String zipCode;
+	private String phoneNumber;
+	private String emailId;
+	int members = 0;
+	
+	public Contact() {
+		
+	}
+	
+	public Contact(String firstName, String lastName, String address, String city, String state, String zip,
+			String phoneNumber, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.cityName = cityName;
+		this.stateName = stateName;
+		this.zipCode = zipCode;
+		this.phoneNumber = phoneNumber;
+		this.emailId = emailId;
+		members++;
+	}
 
-		System.out.println("Welcome to Address Book");
-		Scanner sc = new Scanner(System.in);
-		System.out.print("First Name:");
-		String fName = sc.nextLine();
-		System.out.print("Last Name:");
-		String lName = sc.nextLine();
-		System.out.print("Enter Address:");
-		String add = sc.nextLine();
-		System.out.print("Enter City:");
-		String c = sc.nextLine();
-		System.out.print("Enter State:");
-		String s = sc.nextLine();
-		System.out.print("Enter ZIP:");
-		String p = sc.nextLine();
-		System.out.print("Enter PhoneNumber:");
-		String pN = sc.nextLine();
-		System.out.print("Enter email id:");
-		String eid = sc.nextLine();
+	public String getFirstName() {
+		return firstName;
+	}
 
-		AddressBook member1 = new AddressBook(fName, lName, add, c, s, p, pN, eid);
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-		// creating array list
+	public String getLastName() {
+		return lastName;
+	}
 
-		ArrayList<AddressBook> al = new ArrayList<AddressBook>();
-		al.add(member1);
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-		// Getting Iterator
+	public String getAddress() {
+		return address;
+	}
 
-		Iterator itr = al.iterator();
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-		// traversing elements of Array List Object
+	public String getCity() {
+		return cityName;
+	}
 
-		while (itr.hasNext()) {
-			AddressBook ab = (AddressBook) itr.next();
-			System.out.println(ab.firstName + "" + ab.lastName + "\n" + ab.address + "\n" + ab.cityName + "\n" + ab.stateName
-					+ "\n" + ab.zipCode + "\n" + ab.phoneNumber + "\n" + ab.emailId + "\n");
-		}
+	public void setCity(String cityName) {
+		this.cityName = cityName;
+	}
 
-		System.out.println("Enter the contact Name to edit:");
-		String name = sc.nextLine();
-		for (AddressBook contact : al) {
-			if (contact.firstName.equals(name)){
-				
-				System.out.println("Edit the contact details");
-				Scanner sc1 = new Scanner(System.in);
-				System.out.print("First Name:");
-				String fName1 = sc.nextLine();
-				System.out.print("Last Name:");
-				String lName1 = sc.nextLine();
-				System.out.print("Enter Address:");
-				String add1 = sc.nextLine();
-				System.out.print("Enter City:");
-				String c1 = sc.nextLine();
-				System.out.print("Enter State:");
-				String s1 = sc.nextLine();
-				System.out.print("Enter ZIP:");
-				String p1 = sc.nextLine();
-				System.out.print("Enter PhoneNumber:");
-				String pN1 = sc.nextLine();
-				System.out.print("Enter email id:");
-				String eid1 = sc.nextLine();
-				AddressBook member2 = new AddressBook(fName1, lName1, add1, c1, s1, p1, pN1, eid1);
-				
-				al.set(0, member2);
-			}
-			
-			System.out.println("\nEdited contact details\n");
-			
-			while (itr.hasNext()) {
-				AddressBook ab = (AddressBook) itr.next();
-				System.out.println("\n............................................\n");
-				System.out.println(ab.firstName + "" + ab.lastName + "\n" + ab.address + "\n" + ab.cityName + "\n" + ab.stateName
-						+ "\n" + ab.zipCode + "\n" + ab.phoneNumber + "\n" + ab.emailId + "\n");
-			}
-		}
+	public String getState() {
+		return stateName;
+	}
 
+	public void setState(String stateName) {
+		this.stateName = stateName;
+	}
+
+	public String getZip() {
+		return zipCode;
+	}
+
+	public void setZip(String zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getEmail() {
+		return emailId;
+	}
+
+	public void setEmail(String emailId) {
+		this.emailId = emailId;
 	}
 }
