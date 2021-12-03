@@ -18,6 +18,7 @@ public class AddressBook {
 	int members = 0;
 
 	public List<Contact> addressBook = new ArrayList<>();
+	
 	public AddressBook() {
 		addressBook = new ArrayList<Contact>();
 	}
@@ -41,19 +42,19 @@ public class AddressBook {
 		person.setAddress(address);
 		System.out.print("Enter City:");
 		cityName = sc.nextLine();
-		person.setCity(cityName);
+		person.setCityName(cityName);
 		System.out.print("Enter State:");
 		stateName = sc.nextLine();
-		person.setState(stateName);
+		person.setStateName(stateName);
 		System.out.print("Enter ZIP:");
 		zipCode = sc.nextLine();
-		person.setZip(zipCode);
+		person.setZipCode(zipCode);
 		System.out.print("Enter PhoneNumber:");
 		phoneNumber = sc.nextLine();
 		person.setPhoneNumber(phoneNumber);
 		System.out.print("Enter email id:");
 		emailId = sc.nextLine();
-		person.setEmail(emailId);
+		person.setEmailId(emailId);
 
 		addressBook.add(new Contact(firstName, lastName, address, cityName, stateName, zipCode, phoneNumber, emailId));
 	}
@@ -62,8 +63,8 @@ public class AddressBook {
 		
 		for (Contact ab : addressBook)  {
 			
-			System.out.println(ab.getFirstName()+"\n" + "" + ab.getLastName() + "\n" + ab.getAddress() + "\n" + ab.getCity() + "\n" + ab.getState()
-					+ "\n" + ab.getZip() + "\n" + ab.getPhoneNumber() + "\n" + ab.getEmail() + "\n");
+			System.out.println(ab.getFirstName()+"\n" + "" + ab.getLastName() + "\n" + ab.getAddress() + "\n" + ab.getCityName() + "\n" + ab.getStateName()
+					+ "\n" + ab.getZipCode() + "\n" + ab.getPhoneNumber() + "\n" + ab.getEmailId() + "\n");
 		}
 	}
 
@@ -102,48 +103,19 @@ public class AddressBook {
 	public void deleteContact(int i) {
 		addressBook.remove(i);
 	}
-
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		AddressBook ab = new AddressBook();
-		int choice;
-		char c;
-		System.out.println("Welcome to AddressBook");
-
-		do {
-			System.out.println("Enter \n1.Add details \n2.Update details \n3.Delete details \n4.Show members \n5.No of persons");
-			choice = sc.nextInt();
-			switch (choice) {
-				case 1:
-					ab.addPerson();
-					break;
-				case 2:
-					System.out.println("Enter your first name to edit person details:");
-					String fName = sc.next();
-					int i = ab.getIndex(fName);
-					ab.editContact(i);
-					break;
-				case 3:
-					System.out.println("Enter your first name to delete person details:");
-					String fNameDelete = sc.next();
-					int delete = ab.getIndex(fNameDelete);
-					ab.deleteContact(delete);
-					break;
-				case 4:
-					ab.display();
-					break;
-				case 5:
-					System.out.println("No of person details in your AddressBook:" + new Contact().members);
-					System.exit(0);			
-			}
-			
-			System.out.println("Do you Want to continue(Y/N):");
-			c = sc.next().charAt(0);
-			
-		}
-		while(c == 'Y' || c == 'y' );
-		sc.close();
-		
-	}	
+	 public void printContact() {
+	        for (int i = 0; i < addressBook.size(); i++) {
+		            System.out.println("Contact Details");
+		            System.out.println("Name         : " + addressBook.get(i).getFirstName()+ "\n " 
+		            				 + addressBook.get(i).getLastName() + "\n"
+		                             + "Address      : " + addressBook.get(i).getAddress()   + "\n"
+		                             + "City         : " + addressBook.get(i).getCityName()      + "\n"
+		                             + "State        : " + addressBook.get(i).getStateName()     + "\n"
+		                             + "ZipCode      : " + addressBook.get(i).getZipCode()   + "\n"
+		                             + "PhoneNumber  : " + addressBook.get(i).getPhoneNumber()  + "\n"
+		                             + "EmailId      : " + addressBook.get(i).getEmailId());
+		        }
+	 }
+	
 }
 

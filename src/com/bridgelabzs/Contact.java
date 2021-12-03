@@ -13,22 +13,22 @@ public class Contact {
 	private String emailId;
 	int members = 0;
 	
-	public Contact() {
-		
-	}
-	
 	public Contact(String firstName, String lastName, String address, String city, String state, String zip,
-			String phoneNumber, String email) {
+								String phoneNumber, String email) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
-		this.cityName = cityName;
-		this.stateName = stateName;
-		this.zipCode = zipCode;
+		this.cityName = city;
+		this.stateName = state;
+		this.zipCode = zip;
 		this.phoneNumber = phoneNumber;
-		this.emailId = emailId;
+		this.emailId = email;
 		members++;
+	}
+
+	public Contact() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getFirstName() {
@@ -55,27 +55,27 @@ public class Contact {
 		this.address = address;
 	}
 
-	public String getCity() {
+	public String getCityName() {
 		return cityName;
 	}
 
-	public void setCity(String cityName) {
+	public void setCityName(String cityName) {
 		this.cityName = cityName;
 	}
 
-	public String getState() {
+	public String getStateName() {
 		return stateName;
 	}
 
-	public void setState(String stateName) {
+	public void setStateName(String stateName) {
 		this.stateName = stateName;
 	}
 
-	public String getZip() {
+	public String getZipCode() {
 		return zipCode;
 	}
 
-	public void setZip(String zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
@@ -87,11 +87,27 @@ public class Contact {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getEmail() {
+	public String getEmailId() {
 		return emailId;
 	}
 
-	public void setEmail(String emailId) {
+	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
+	
+	public int getMembers() {
+		return members;
+	}
+
+	public void setMembers(int members) {
+		this.members = members;
+	}
+
+	@Override
+	public String toString() {
+		return "Contact [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", cityName="
+				+ cityName + ", stateName=" + stateName + ", zipCode=" + zipCode + ", phoneNumber=" + phoneNumber
+				+ ", emailId=" + emailId + ", members=" + members + "]";
+	}
+	
 }
