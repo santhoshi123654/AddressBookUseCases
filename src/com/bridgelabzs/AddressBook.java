@@ -66,9 +66,6 @@ public class AddressBook {
 				+ cityName + ", stateName=" + stateName + ", zipCode=" + zipCode + ", phoneNumber=" + phoneNumber
 				+ ", emailId=" + emailId + "]";
 	}
-	public void AddressBook(String fName, String lName, String add, String c, String s, String p, String pN, String eid) {
-		// TODO Auto-generated constructor stub
-	}
 
 	public static void main(String[] args) {
 		
@@ -77,11 +74,11 @@ public class AddressBook {
 		contact.setFirstName("santhoshi");
 		contact.setLastName("Badam");
 		contact.setAddress("1-8,MG road");
-		contact. setCityName("Hyderabad");
-		contact. setStateName("Telangana");
-		contact. setZipCode("509608");
-		contact. setEmailId("santhoshi.badam@gmail.com");
-		contact. setPhoneNumber("9784568792");
+		contact.setCityName("Hyderabad");
+		contact.setStateName("Telangana");
+		contact.setZipCode("509608");
+		contact.setEmailId("santhoshi.badam@gmail.com");
+		contact.setPhoneNumber("9784568792");
 	
 		System.out.println(contact);
 	}
