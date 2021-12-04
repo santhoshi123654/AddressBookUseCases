@@ -6,11 +6,11 @@ import java.util.List;
 
 import java.util.Scanner;
 
+
 public class Contact <T> implements AddressBookI {
 
 	static int value;
 	public static List<AddressBook> addresses;
-
 
 	public Contact() {
 		addresses = new ArrayList<>();
@@ -20,8 +20,9 @@ public class Contact <T> implements AddressBookI {
 		return addresses;
 	}
 
-	public void setAddreses(List<AddressBook> addreses) {
-		this.addresses = addreses;
+
+	public void setAddreses(List<AddressBook> addresses) {
+		this.addresses = addresses;
 	}
 
 	public void addContact(AddressBook addressBook) {
@@ -51,9 +52,9 @@ public class Contact <T> implements AddressBookI {
 		System.out.print("Enter email id:");
 		String emailId = sc.nextLine();
 		
-		AddressBook addressBook = new AddressBook(fName,lName, address,cityName,stateName,zipCode,phoneNumber,emailId);
+		AddressBook addressBook = new AddressBook(fName, lName, address,cityName,stateName,zipCode,phoneNumber,emailId);
 		return addressBook;
-}
+	}
 	public void updateContact(String name, AddressBook addressBook) {
 		// updated the phone number of existing contact
 		int count = 0;
@@ -70,28 +71,19 @@ public class Contact <T> implements AddressBookI {
 			System.out.println(name + " contact not existed ");
 		}
 		System.out.println(addresses);
-		scanner.close();
 	}
-	public AddressBook editDetails(String name, AddressBook addressBook) {
-		
-		if (addressBook.getFirstName().equals(name)) {
-			addressBook = contact();
-		}
-		else {
-			System.out.println("Enter correct Name to edit");
-		}
-		return addressBook;
-		
-	}
-	public void deleteContact(String name,AddressBook addressBook) {
-		for(int i=0;i<addresses.size();i++) {
-			if(addressBook.getFirstName().equals(name)) {
+
+	public void deleteContact(String name, AddressBook addressBook) {
+
+		// delete the matched contact
+		for (int i = 0; i < addresses.size(); i++) {
+			if (addressBook.getFirstName().equals(name)) {
 				addresses.remove(i);
 			}
 		}
-		return ; 
+		System.out.println(addresses);
 	}
-	
+
 	public int dublicateAddress(String name, AddressBook addressBook) {
 		int count = 0;
 		for (int i = 0; i < addresses.size(); i++) {
@@ -110,9 +102,11 @@ public class Contact <T> implements AddressBookI {
 		book.mapBook.put("person1", addresses);
 		
 	}
+
 	public void printBooks(MultipleAddressBooks multipleAddressBooks) {
 
 		System.out.println(multipleAddressBooks.mapBook);
 
 	}
 }
+

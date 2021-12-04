@@ -15,7 +15,6 @@ public class AddressBook {
 	String phoneNumber;
 	String emailId;
 
-
 	public AddressBook(String firstName, String lastName, String address, String cityName, String stateName,
 			String zipCode, String phoneNumber, String emailId) {
 		super();
@@ -44,7 +43,6 @@ public class AddressBook {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-
 	}
 
 
