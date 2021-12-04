@@ -1,97 +1,145 @@
 package com.bridgelabzs;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
 
-public class Contact {
+public class Contact<T> implements AddressBookI {
+
+		static int value;
+		public static ArrayList<AddressBook> addresses;
+
+		public Contact() {
+			addresses = new ArrayList<>();
+		}
+
+		public void addContact(AddressBook addressBook) {
+
+			addresses.add(addressBook);
+			System.out.println(addresses);
+		}
 	
-	private String firstName;
-	private String lastName;
-	private String address;
-	private String cityName;
-	private String stateName;
-	private String zipCode;
-	private String phoneNumber;
-	private String emailId;
-	int members = 0;
+	public static AddressBook contact() {
+		
+		System.out.println("Welcome to Address Book");
+		Scanner sc = new Scanner(System.in);
+		System.out.print("First Name:");
+		String fName = sc.nextLine();
+		System.out.print("Last Name:");
+		String lName = sc.nextLine();
+		System.out.print("Enter Address:");
+		String address = sc.nextLine();
+		System.out.print("Enter City:");
+		String cityName = sc.nextLine();
+		System.out.print("Enter State:");
+		String stateName = sc.nextLine();
+		System.out.print("Enter ZIP:");
+		String zipCode = sc.nextLine();
+		System.out.print("Enter PhoneNumber:");
+		String phoneNumber = sc.nextLine();
+		System.out.print("Enter email id:");
+		String emailId = sc.nextLine();
+		
+		AddressBook addressBook = new AddressBook(fName, lName, address,cityName,stateName,zipCode,phoneNumber,emailId);
+		return addressBook;
+	}
 	
-	public Contact() {
+	public void updateContact(String name, AddressBook addressBook) {
+		// updated the phone number of existing contact
+		int count = 0;
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("enter phone number : ");
+		String number = scanner.next();
+		for (int i = 0; i < addresses.size(); i++) {
+			if (addressBook.getFirstName().equals(name)) {
+				addressBook.setPhoneNumber(number);
+				count++;
+			}
+		}
+		if (count == 0) {
+			System.out.println(name + " contact not existed ");
+		}
+		System.out.println(addresses);
+	}
+
+	public void deleteContact(String name, AddressBook addressBook) {
+
+		// delete the matched contact
+		for (int i = 0; i < addresses.size(); i++) {
+			if (addressBook.getFirstName().equals(name)) {
+				addresses.remove(i);
+			}
+		}
+		System.out.println(addresses);
+	}
+
+	public int dublicateAddress(String name, AddressBook addressBook) {
+		int count = 0;
+		for (int i = 0; i < addresses.size(); i++) {
+			if(addressBook.getFirstName() == null) {
+				return 0;
+			}
+			else if (addressBook.getFirstName().equals(name)) {
+				count++;
+			}
+		}
+		return count;
+	}
+
+	public void multiAddressBooks(MultipleAddressBooks book) {
+		
+		book.mapBook.put("person1", addresses);
 		
 	}
+
+	public void printBooks(MultipleAddressBooks multipleAddressBooks) {
+
+		System.out.println(multipleAddressBooks.mapBook);
+	}
 	
-	public Contact(String firstName, String lastName, String address, String city, String state, String zip,
-			String phoneNumber, String email) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.cityName = cityName;
-		this.stateName = stateName;
-		this.zipCode = zipCode;
-		this.phoneNumber = phoneNumber;
-		this.emailId = emailId;
-		members++;
-	}
+	public void searchCityState(MultipleAddressBooks multipleAddressBooks) {
+		while (true) {
+			Scanner scanner = new Scanner(System.in);
+			System.out.println(
+					"enter 1 : for search a person by city name \n enter 2 : for search a person by state name  \n enter 3 : for exit ");
+			int num = scanner.nextInt();
+			int count = 0;
+			switch (num) {
 
-	public String getFirstName() {
-		return firstName;
-	}
+			case 1:
+				System.out.println("enter city name to search person ");
+				String city = scanner.next();
+				for (List<AddressBook> entry : multipleAddressBooks.mapBook.values()) {
+					for (AddressBook addressBook1 : entry) {
+						if (addressBook1.getCityName().equals(city)) {
+							System.out.println("city matched name : " + city + " and person name : "
+									+ addressBook1.getFirstName());
+							count++;
+						}
+					}
+				}
+				System.out.println("number of persons find by city name are : " + count);
+				break;
+			case 2:
+				System.out.println("enter state name to search person ");
+				String state = scanner.next();
+				for (List<AddressBook> entry : multipleAddressBooks.mapBook.values()) {
+					for (AddressBook addressBook1 : entry) {
+						if (addressBook1.getStateName().equals(state)) {
+							System.out.println("state matched : " + state + " and person name is : "
+									+ addressBook1.getFirstName());
+							count++;
+						}
+					}
+				}
+				System.out.println("number of persons find by state name are : " + count);
+				break;
+			}
+			if(num ==3) {
+				break;
+			}
+		}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getCity() {
-		return cityName;
-	}
-
-	public void setCity(String cityName) {
-		this.cityName = cityName;
-	}
-
-	public String getState() {
-		return stateName;
-	}
-
-	public void setState(String stateName) {
-		this.stateName = stateName;
-	}
-
-	public String getZip() {
-		return zipCode;
-	}
-
-	public void setZip(String zipCode) {
-		this.zipCode = zipCode;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public String getEmail() {
-		return emailId;
-	}
-
-	public void setEmail(String emailId) {
-		this.emailId = emailId;
 	}
 }
