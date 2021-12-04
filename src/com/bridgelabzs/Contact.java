@@ -17,6 +17,7 @@ public List<AddressBook> addresses;
 	public void addContact(AddressBook addressBook) {
 		addresses.add(addressBook);
 		System.out.println(addresses);
+
 	}
 	
 	public static AddressBook contact() {
@@ -52,7 +53,7 @@ public List<AddressBook> addresses;
 			System.out.println("Enter correct Name to edit");
 		}
 		return addressBook;
-
+		
 	}
 	public AddressBook deleteContact(String name,AddressBook addressBook) {
 		for(int i=0;i<addresses.size();i++) {
@@ -60,9 +61,9 @@ public List<AddressBook> addresses;
 				addresses.remove(i);
 			}
 		}
-		System.out.println(addresses);
 		return addressBook;
 	}
+	
 
 	public static void main(String[] args) {
 
@@ -77,6 +78,6 @@ public List<AddressBook> addresses;
 		System.out.println(addressBook);
 		System.out.println("Enter a name to be deleted ");
 		String deletingname = scanner.next();
-		addressBook= contact.deleteContact(deletingname,addressBook);
+		addressBook=contact.deleteContact(deletingname,addressBook);
 	}
 }

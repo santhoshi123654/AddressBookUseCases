@@ -2,10 +2,10 @@ package com.bridgelabzs;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 
 public class AddressBook {
+
 	String firstName;
 	String lastName;
 	String address;
@@ -18,7 +18,6 @@ public class AddressBook {
 
 	public AddressBook(String firstName, String lastName, String address, String cityName, String stateName,
 			String zipCode, String phoneNumber, String emailId) {
-		
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -30,29 +29,38 @@ public class AddressBook {
 		this.emailId = emailId;
 	}
 
+	
+
 	public String getFirstName() {
 		return firstName;
 	}
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+
 	}
+
 
 	public String getLastName() {
 		return lastName;
 	}
 
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 
 	public String getAddress() {
 		return address;
 	}
 
+
 	public void setAddress(String address) {
 		this.address = address;
+
 	}
+
 
 	public String getCityName() {
 		return cityName;
@@ -102,4 +110,3 @@ public class AddressBook {
 	}
 
 }
-
