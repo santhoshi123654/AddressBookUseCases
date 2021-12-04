@@ -29,8 +29,6 @@ public class AddressBook {
 		this.emailId = emailId;
 	}
 
-	
-
 	public String getFirstName() {
 		return firstName;
 	}
@@ -40,14 +38,13 @@ public class AddressBook {
 
 	}
 
-
 	public String getLastName() {
 		return lastName;
 	}
 
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+
 	}
 
 
@@ -55,12 +52,9 @@ public class AddressBook {
 		return address;
 	}
 
-
 	public void setAddress(String address) {
 		this.address = address;
-
 	}
-
 
 	public String getCityName() {
 		return cityName;
@@ -108,5 +102,4 @@ public class AddressBook {
 				+ cityName + ", stateName=" + stateName + ", zipCode=" + zipCode + ", phoneNumber=" + phoneNumber
 				+ ", emailId=" + emailId + "]";
 	}
-
 }
