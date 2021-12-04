@@ -1,97 +1,54 @@
 package com.bridgelabzs;
 
+import java.util.Scanner;
 
 public class Contact {
 	
-	private String firstName;
-	private String lastName;
-	private String address;
-	private String cityName;
-	private String stateName;
-	private String zipCode;
-	private String phoneNumber;
-	private String emailId;
-	int members = 0;
-	
-	public Contact() {
+
+	public static AddressBook contact() {
 		
-	}
-	
-	public Contact(String firstName, String lastName, String address, String city, String state, String zip,
-			String phoneNumber, String email) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.cityName = cityName;
-		this.stateName = stateName;
-		this.zipCode = zipCode;
-		this.phoneNumber = phoneNumber;
-		this.emailId = emailId;
-		members++;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		System.out.println("Welcome to Address Book");
+		Scanner sc = new Scanner(System.in);
+		System.out.print("First Name:");
+		String fName = sc.nextLine();
+		System.out.print("Last Name:");
+		String lName = sc.nextLine();
+		System.out.print("Enter Address:");
+		String address = sc.nextLine();
+		System.out.print("Enter City:");
+		String cityName = sc.nextLine();
+		System.out.print("Enter State:");
+		String stateName = sc.nextLine();
+		System.out.print("Enter ZIP:");
+		String zipCode = sc.nextLine();
+		System.out.print("Enter PhoneNumber:");
+		String phoneNumber = sc.nextLine();
+		System.out.print("Enter email id:");
+		String emailId = sc.nextLine();
+		
+		AddressBook addressBook = new AddressBook(fName, lName, address,cityName,stateName,zipCode,phoneNumber,emailId);
+		return addressBook;
+}
+	public AddressBook editDetails(String name, AddressBook addressBook) {
+		
+		if (addressBook.getFirstName().equals(name)) {
+			addressBook = contact();
+		}
+		return addressBook;
 	}
 
-	public String getAddress() {
-		return address;
-	}
+	public static void main(String[] args) {
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
 
-	public String getCity() {
-		return cityName;
-	}
+		AddressBook addressBook = contact();
+		System.out.println(addressBook);
+		System.out.println();
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the Name to be Edited :");
+		String name = scanner.next();
+		Contact contact=new Contact();
+		addressBook =contact.editDetails(name,addressBook);
+		System.out.println(addressBook);
 
-	public void setCity(String cityName) {
-		this.cityName = cityName;
-	}
-
-	public String getState() {
-		return stateName;
-	}
-
-	public void setState(String stateName) {
-		this.stateName = stateName;
-	}
-
-	public String getZip() {
-		return zipCode;
-	}
-
-	public void setZip(String zipCode) {
-		this.zipCode = zipCode;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public String getEmail() {
-		return emailId;
-	}
-
-	public void setEmail(String emailId) {
-		this.emailId = emailId;
 	}
 }
