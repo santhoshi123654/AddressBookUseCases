@@ -2,69 +2,102 @@ package com.bridgelabzs;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class AddressBook {
+
+	String firstName;
+	String lastName;
+	String address;
+	String cityName;
+	String stateName;
+	String zipCode;
+	String phoneNumber;
+	String emailId;
+
+	public AddressBook(String firstName, String lastName, String address, String cityName, String stateName,
+			String zipCode, String phoneNumber, String emailId) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.cityName = cityName;
+		this.stateName = stateName;
+		this.zipCode = zipCode;
+		this.phoneNumber = phoneNumber;
+		this.emailId = emailId;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getCityName() {
+		return cityName;
+	}
+
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
+
+	public String getStateName() {
+		return stateName;
+	}
+
+	public void setStateName(String stateName) {
+		this.stateName = stateName;
+	}
+
+	public String getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getEmailId() {
+		return emailId;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+
+	@Override
+	public String toString() {
+		return "AddressBook [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", cityName="
+				+ cityName + ", stateName=" + stateName + ", zipCode=" + zipCode + ", phoneNumber=" + phoneNumber
+				+ ", emailId=" + emailId + "]";
+	}
 	
-	static String f_name;
-    static Scanner s=new Scanner(System.in);
-
-    public static void addAddressBook(Map<String, List<Contact>> addressBooks) {
-        System.out.println("Add new AddressBook");
-        String bookName = s.next();
-        addressBooks.put(bookName, new ArrayList<Contact>());
-    }
-
-    public static void displayAllAddressBook(Map<String, List<Contact>> addressBooks) {
-        boolean is_Empty=addressBooks.isEmpty();
-        if(is_Empty==true)
-            System.out.println("No Address Books are Present");
-        else
-            System.out.println(addressBooks);
-    }
-
-    public static void editAddressBook(Map<String, List<Contact>> addressBooks) {
-        System.out.println("Enter the name of the AddressBook you want to Edit");
-        String bookName1 = s.next();
-
-        if(addressBooks.containsKey(bookName1)) {
-            List<Contact> contact = addressBooks.get(bookName1);
-            int choice;
-            do{
-                System.out.println("Enter your option : ");
-                System.out.println("1.Add contact  ");
-                System.out.println("2.Display all contact ");
-                System.out.println("3.Edit Contact ");
-                System.out.println("4.Delete Contact ");
-
-                choice=s.nextInt();
-                switch (choice)
-                {
-                    case 1:
-                        ContactList.Add_Contact(contact);
-                        break;
-                    case 2:
-                    	ContactList.Display_All(contact);
-                        break;
-                    case 3:
-                    	ContactList.editContact(contact);
-                        break;
-                    case 4:
-                    	ContactList.deleteContact(contact);
-                        break;
-                    default:
-                        System.out.println("Enter valid option");
-                        break;
-                }
-                System.out.println("Do you want to continue (1.Continue or 0.Exit)");
-                choice=s.nextInt();
-            }while(choice != 0);
-        }
-        else
-            System.out.println("Invalid AddressBook Name!Not exist");
-    }
 	
 }
-
