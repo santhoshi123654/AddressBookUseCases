@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AddressBook {
-	
 	String firstName;
 	String lastName;
 	String address;

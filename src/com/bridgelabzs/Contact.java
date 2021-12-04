@@ -1,10 +1,24 @@
 package com.bridgelabzs;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import java.util.Scanner;
 
 public class Contact {
 	
-
+public List<AddressBook> addresses;
+	
+	public Contact() {
+		addresses = new ArrayList();
+	}
+	
+	public void addContact(AddressBook addressBook) {
+		addresses.add(addressBook);
+		System.out.println(addresses);
+	}
+	
 	public static AddressBook contact() {
 		
 		System.out.println("Welcome to Address Book");
@@ -34,11 +48,23 @@ public class Contact {
 		if (addressBook.getFirstName().equals(name)) {
 			addressBook = contact();
 		}
+		else {
+			System.out.println("Enter correct Name to edit");
+		}
+		return addressBook;
+
+	}
+	public AddressBook deleteContact(String name,AddressBook addressBook) {
+		for(int i=0;i<addresses.size();i++) {
+			if(addressBook.getFirstName().equals(name)) {
+				addresses.remove(i);
+			}
+		}
+		System.out.println(addresses);
 		return addressBook;
 	}
 
 	public static void main(String[] args) {
-
 
 		AddressBook addressBook = contact();
 		System.out.println(addressBook);
@@ -49,6 +75,8 @@ public class Contact {
 		Contact contact=new Contact();
 		addressBook =contact.editDetails(name,addressBook);
 		System.out.println(addressBook);
-
+		System.out.println("Enter a name to be deleted ");
+		String deletingname = scanner.next();
+		addressBook= contact.deleteContact(deletingname,addressBook);
 	}
 }
