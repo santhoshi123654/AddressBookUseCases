@@ -3,7 +3,8 @@ package com.bridgelabzs;
 public interface AddressBookI {
 	
 
-public void addContact(AddressBook addressBook);
+	public void addContact(AddressBook addressBook);
+
 	
 	public void updateContact(String name, AddressBook addressBook);
 	

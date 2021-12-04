@@ -16,13 +16,13 @@ public class AddressBookMain{
 		Scanner scanner = new Scanner(System.in);
 		int exit2=0;
 		while (exit2 != EXIT_TWO) {
-			
-			Contact<Object> contactPerson = new Contact<>();
+
+			Contact<Object> contactPerson = new Contact();
 			AddressBook addressBook = new AddressBook(null, null, null, null, null, null, null, null);
 			System.out.println("enter adress book name of a person");
 			String person = scanner.next();
 	
-			System.out.println("\n enter 1 : for add multiple address books \n enter 2 : for print multipleBoks \n enter "+ EXIT_TWO +" : for exit \n ");
+			System.out.println("\n enter 1 : for add multiple address books \n enter 2 : for print multipleBoks\n enter 3 : for search city or state  \n enter "+ EXIT_TWO +" : for exit \n ");
 			int num = scanner.nextInt();
 
 			switch (num) {
@@ -48,7 +48,6 @@ public class AddressBookMain{
 							break;
 						}
 						break;
-						
 					case 2:
 						System.out.println("enter a firsName of contact to modify");
 						String name = scanner.next();
@@ -64,11 +63,14 @@ public class AddressBookMain{
 						break;
 					}
 				}				
-				multipleAddressBooks.mapBook.put(person, contactPerson.addresses);
+				multipleAddressBooks.mapBook.put(person, Contact.addresses);
 				System.out.println(multipleAddressBooks.mapBook);
 				break;
 			case 2:
 				contactPerson.printBooks(multipleAddressBooks);
+			case 3:
+				contactPerson.searchCityState(multipleAddressBooks);
+				break;
 			case 4:
 				exit2=4;
 				break;
@@ -76,3 +78,4 @@ public class AddressBookMain{
 		}
 	}
 }
+
