@@ -1,113 +1,81 @@
 package com.bridgelabzs;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
 
 public class Contact {
 	
-	private String firstName;
-	private String lastName;
-	private String address;
-	private String cityName;
-	private String stateName;
-	private String zipCode;
-	private String phoneNumber;
-	private String emailId;
-	int members = 0;
+public List<AddressBook> addresses;
 	
-	public Contact(String firstName, String lastName, String address, String city, String state, String zip,
-								String phoneNumber, String email) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.cityName = city;
-		this.stateName = state;
-		this.zipCode = zip;
-		this.phoneNumber = phoneNumber;
-		this.emailId = email;
-		members++;
-	}
-
 	public Contact() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getCityName() {
-		return cityName;
-	}
-
-	public void setCityName(String cityName) {
-		this.cityName = cityName;
-	}
-
-	public String getStateName() {
-		return stateName;
-	}
-
-	public void setStateName(String stateName) {
-		this.stateName = stateName;
-	}
-
-	public String getZipCode() {
-		return zipCode;
-	}
-
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public String getEmailId() {
-		return emailId;
-	}
-
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+		addresses = new ArrayList();
 	}
 	
-	public int getMembers() {
-		return members;
-	}
-
-	public void setMembers(int members) {
-		this.members = members;
-	}
-
-	@Override
-	public String toString() {
-		return "Contact [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", cityName="
-				+ cityName + ", stateName=" + stateName + ", zipCode=" + zipCode + ", phoneNumber=" + phoneNumber
-				+ ", emailId=" + emailId + ", members=" + members + "]";
+	public void addContact(AddressBook addressBook) {
+		addresses.add(addressBook);
+		System.out.println(addresses);
 	}
 	
+	public static AddressBook contact() {
+		
+		System.out.println("Welcome to Address Book");
+		Scanner sc = new Scanner(System.in);
+		System.out.print("First Name:");
+		String fName = sc.nextLine();
+		System.out.print("Last Name:");
+		String lName = sc.nextLine();
+		System.out.print("Enter Address:");
+		String address = sc.nextLine();
+		System.out.print("Enter City:");
+		String cityName = sc.nextLine();
+		System.out.print("Enter State:");
+		String stateName = sc.nextLine();
+		System.out.print("Enter ZIP:");
+		String zipCode = sc.nextLine();
+		System.out.print("Enter PhoneNumber:");
+		String phoneNumber = sc.nextLine();
+		System.out.print("Enter email id:");
+		String emailId = sc.nextLine();
+		
+		AddressBook addressBook = new AddressBook(fName, lName, address,cityName,stateName,zipCode,phoneNumber,emailId);
+		return addressBook;
+}
+	public AddressBook editDetails(String name, AddressBook addressBook) {
+		
+		if (addressBook.getFirstName().equals(name)) {
+			addressBook = contact();
+		}
+		else {
+			System.out.println("Enter correct Name to edit");
+		}
+		return addressBook;
+		
+	}
+	public AddressBook deleteContact(String name,AddressBook addressBook) {
+		for(int i=0;i<addresses.size();i++) {
+			if(addressBook.getFirstName().equals(name)) {
+				addresses.remove(i);
+			}
+		}
+		return addressBook;
+	}
+	
+
+	public static void main(String[] args) {
+
+		AddressBook addressBook = contact();
+		System.out.println(addressBook);
+		System.out.println();
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the Name to be Edited :");
+		String name = scanner.next();
+		Contact contact=new Contact();
+		addressBook =contact.editDetails(name,addressBook);
+		System.out.println(addressBook);
+		System.out.println("Enter a name to be deleted ");
+		String deletingname = scanner.next();
+		addressBook=contact.deleteContact(deletingname,addressBook);
+	}
 }
