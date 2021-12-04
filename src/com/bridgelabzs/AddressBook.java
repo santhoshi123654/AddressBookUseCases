@@ -45,7 +45,6 @@ public class AddressBook {
 
 	}
 
-
 	public String getAddress() {
 		return address;
 	}

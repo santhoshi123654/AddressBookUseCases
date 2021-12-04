@@ -16,8 +16,8 @@ public class AddressBookMain{
 		Scanner scanner = new Scanner(System.in);
 		int exit2=0;
 		while (exit2 != EXIT_TWO) {
-
-			Contact<Object> contactPerson = new Contact();
+	
+			Contact<Object> contactPerson = new Contact<>();
 			AddressBook addressBook = new AddressBook(null, null, null, null, null, null, null, null);
 			System.out.println("enter adress book name of a person");
 			String person = scanner.next();

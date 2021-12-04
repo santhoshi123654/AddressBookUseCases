@@ -3,24 +3,22 @@ package com.bridgelabzs;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import java.util.Scanner;
 
-
 public class Contact<T> implements AddressBookI {
-	static int value;
-	public static ArrayList<AddressBook> addresses;
 
-	public Contact() {
-		addresses = new ArrayList<>();
-	}
+		static int value;
+		public static ArrayList<AddressBook> addresses;
 
-	public void addContact(AddressBook addressBook) {
+		public Contact() {
+			addresses = new ArrayList<>();
+		}
 
+		public void addContact(AddressBook addressBook) {
 
-		addresses.add(addressBook);
-		System.out.println(addresses);
-	}
+			addresses.add(addressBook);
+			System.out.println(addresses);
+		}
 	
 	public static AddressBook contact() {
 		
@@ -46,6 +44,7 @@ public class Contact<T> implements AddressBookI {
 		AddressBook addressBook = new AddressBook(fName, lName, address,cityName,stateName,zipCode,phoneNumber,emailId);
 		return addressBook;
 	}
+	
 
 	public void updateContact(String name, AddressBook addressBook) {
 		// updated the phone number of existing contact
@@ -101,36 +100,48 @@ public class Contact<T> implements AddressBookI {
 	}
 
 	public void searchCityState(MultipleAddressBooks multipleAddressBooks) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("enter 1 : for search a person by city name \n enter 2 : for search a person by state name ");
-		int num = scanner.nextInt();
-		switch(num) {
-		
-		case 1 : 
-			System.out.println("enter city name to search person ");
-			String city = scanner.next();
-			for(List<AddressBook> entry : multipleAddressBooks.mapBook.values()) {
-				for(AddressBook addressBook1 : entry) {
-					if(addressBook1.getCityName().equals(city)) {
-						System.out.println("city matched : " + city);
-						System.out.println("person name : " + addressBook1.getFirstName());
+		while (true) {
+			Scanner scanner = new Scanner(System.in);
+			System.out.println(
+					"enter 1 : for search a person by city name \n enter 2 : for search a person by state name  \n enter 3 : for exit ");
+			int num = scanner.nextInt();
+			int count = 0;
+			switch (num) {
+
+
+			case 1:
+				System.out.println("enter city name to search person ");
+				String city = scanner.next();
+				for (List<AddressBook> entry : multipleAddressBooks.mapBook.values()) {
+					for (AddressBook addressBook1 : entry) {
+						if (addressBook1.getCityName().equals(city)) {
+							System.out.println("city matched name : " + city + " and person name : "
+									+ addressBook1.getFirstName());
+							count++;
+						}
 					}
 				}
-			}
-			break;
-		case 2 :
-			System.out.println("enter state name to search person ");
-			String state = scanner.next();
-			for(List<AddressBook> entry : multipleAddressBooks.mapBook.values()) {
-				for(AddressBook addressBook1 : entry) {
-					if(addressBook1.getStateName().equals(state)) {
-						System.out.println("state matched : " + state);
-						System.out.println("person name : " + addressBook1.getFirstName());
+				System.out.println("number of persons find by city name are : " + count);
+				break;
+			case 2:
+				System.out.println("enter state name to search person ");
+				String state = scanner.next();
+				for (List<AddressBook> entry : multipleAddressBooks.mapBook.values()) {
+					for (AddressBook addressBook1 : entry) {
+						if (addressBook1.getStateName().equals(state)) {
+							System.out.println("state matched : " + state + " and person name is : "
+									+ addressBook1.getFirstName());
+							count++;
+						}
 					}
 				}
+				System.out.println("number of persons find by state name are : " + count);
+				break;
 			}
-			break;
+			if(num ==3) {
+				break;
+			}
 		}
-			
+
 	}
 }
