@@ -1,135 +1,97 @@
 package com.bridgelabzs;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Scanner;
 
-public class Contact<T> implements AddressBookI {
+public class Contact {
 
-	static int value;
-	public static ArrayList<AddressBook> addresses;
+	 private String firstName;
+	    private String lastName;
+	    private String city;
+	    private String state;
+	    private String zip;
+	    private String phoneNumber;
+	    private String email;
+	    private List<Contact> contact;
 
-	public Contact() {
-		addresses = new ArrayList<>();
-	}
+	    public void setfirstName(String firstName) {
+	        this.firstName = firstName;
+	    }
+	    public String getfirstName() {
+	        return firstName;
+	    }
 
-	public void addContact(AddressBook addressBook) {
+	    public void setlastName(String lastName) {
+	        this.lastName = lastName;
+	    }
+	    public String getlastName() {
+	        return lastName;
+	    }
 
-		// added new contact into list
-		addresses.add(addressBook);
-		System.out.println(addresses);
-	}
-	
-	public static AddressBook contact() {
-		
-		System.out.println("Welcome to Address Book");
-		Scanner sc = new Scanner(System.in);
-		System.out.print("First Name:");
-		String fName = sc.nextLine();
-		System.out.print("Last Name:");
-		String lName = sc.nextLine();
-		System.out.print("Enter Address:");
-		String address = sc.nextLine();
-		System.out.print("Enter City:");
-		String cityName = sc.nextLine();
-		System.out.print("Enter State:");
-		String stateName = sc.nextLine();
-		System.out.print("Enter ZIP:");
-		String zipCode = sc.nextLine();
-		System.out.print("Enter PhoneNumber:");
-		String phoneNumber = sc.nextLine();
-		System.out.print("Enter email id:");
-		String emailId = sc.nextLine();
-		
-		AddressBook addressBook = new AddressBook(fName, lName, address,cityName,stateName,zipCode,phoneNumber,emailId);
-		return addressBook;
-	}
-	
-	public void updateContact(String name, AddressBook addressBook) {
-		// updated the phone number of existing contact
-		int count = 0;
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("enter phone number : ");
-		String number = scanner.next();
-		for (int i = 0; i < addresses.size(); i++) {
-			if (addressBook.getFirstName().equals(name)) {
-				addressBook.setPhoneNumber(number);
-				count++;
-			}
+	    public void setcity(String city) {
+	        this.city = city;
+	    }
+	    public String getcity() {
+	        return city;
+	    }
+
+	    public void setstate(String state) {
+	        this.state = state;
+	    }
+	    public String getstate() {
+	        return state;
+	    }
+
+	    public void setzip(String zip) {
+	        this.zip = zip;
+	    }
+	    public String getzip() {
+	        return zip;
+	    }
+
+	    public void setphoneNumber(String phoneNumber) {
+	        this.phoneNumber = phoneNumber;
+	    }
+	    public String getphoneNumber() {
+	        return phoneNumber;
+	    }
+
+	    public void setemail(String email) {
+	        this.email = email;
+	    }
+	    public String getemail() {
+	        return email;
+	    }
+
+	    @Override
+	    public String toString() {
+	        return '\n'+"Contact is"+'\n'+ "First Name: " + firstName +'\n'+ "Last  Name: " + lastName +'\n'+ "City : " + city +'\n'+ "State : " + state
+	                + "zip : " + zip +'\n'+"Phone Number : " + phoneNumber +'\n'+ "Email Id: " + email +'\n';
+	    }
+		@Override
+		public int hashCode() {
+			return Objects.hash(city, contact, email, firstName, lastName, phoneNumber, state, zip);
 		}
-		if (count == 0) {
-			System.out.println(name + " contact not existed ");
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Contact other = (Contact) obj;
+			return Objects.equals(city, other.city) && Objects.equals(contact, other.contact)
+					&& Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName)
+					&& Objects.equals(lastName, other.lastName) && Objects.equals(phoneNumber, other.phoneNumber)
+					&& Objects.equals(state, other.state) && Objects.equals(zip, other.zip);
 		}
-		System.out.println(addresses);
-	}
+	    
 
-	public void deleteContact(String name, AddressBook addressBook) {
 
-		// delete the matched contact
-		for (int i = 0; i < addresses.size(); i++) {
-			if (addressBook.getFirstName().equals(name)) {
-				addresses.remove(i);
-			}
-		}
-		System.out.println(addresses);
-	}
-
-	public int dublicateAddress(String name, AddressBook addressBook) {
-		int count = 0;
-		for (int i = 0; i < addresses.size(); i++) {
-			if(addressBook.getFirstName() == null) {
-				return 0;
-			}
-			else if (addressBook.getFirstName().equals(name)) {
-				count++;
-			}
-		}
-		return count;
-	}
-
-	public void multiAddressBooks(MultipleAddressBooks book) {
-		
-		book.mapBook.put("person1", addresses);
-		
-	}
-
-	public void printBooks(MultipleAddressBooks multipleAddressBooks) {
-
-		System.out.println(multipleAddressBooks.mapBook);
-	}
-	
-	public void searchCityState(MultipleAddressBooks multipleAddressBooks) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("enter 1 : for search a person by city name \n enter 2 : for search a person by state name ");
-		int num = scanner.nextInt();
-		switch(num) {
-		
-		case 1 : 
-			System.out.println("enter city name to search person ");
-			String city = scanner.next();
-			for(List<AddressBook> entry : multipleAddressBooks.mapBook.values()) {
-				for(AddressBook addressBook1 : entry) {
-					if(addressBook1.getCityName().equals(city)) {
-						System.out.println("city matched : " + city);
-						System.out.println("person name : " + addressBook1.getFirstName());
-					}
-				}
-			}
-			break;
-		case 2 :
-			System.out.println("enter state name to search person ");
-			String state = scanner.next();
-			for(List<AddressBook> entry : multipleAddressBooks.mapBook.values()) {
-				for(AddressBook addressBook1 : entry) {
-					if(addressBook1.getStateName().equals(state)) {
-						System.out.println("state matched : " + state);
-						System.out.println("person name : " + addressBook1.getFirstName());
-					}
-				}
-			}
-			break;
-		}
-			
-	}
 }
