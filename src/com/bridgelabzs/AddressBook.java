@@ -1,104 +1,35 @@
 package com.bridgelabzs;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class AddressBook {
+    static Scanner s=new Scanner(System.in);
 
-	String firstName;
-	String lastName;
-	String address;
-	String cityName;
-	String stateName;
-	String zipCode;
-	String phoneNumber;
-	String emailId;
+    public static void main(String[] args) {
 
-	public AddressBook(String firstName, String lastName, String address, String cityName, String stateName,
-			String zipCode, String phoneNumber, String emailId) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.cityName = cityName;
-		this.stateName = stateName;
-		this.zipCode = zipCode;
-		this.phoneNumber = phoneNumber;
-		this.emailId = emailId;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-
-	}
-
-	public String getCityName() {
-		return cityName;
-	}
-
-	public void setCityName(String cityName) {
-		this.cityName = cityName;
-	}
-
-	public String getStateName() {
-		return stateName;
-	}
-
-	public void setStateName(String stateName) {
-		this.stateName = stateName;
-	}
-
-	public String getZipCode() {
-		return zipCode;
-	}
-
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public String getEmailId() {
-		return emailId;
-	}
-
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
-
-	@Override
-	public String toString() {
-		return "AddressBook [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", cityName="
-				+ cityName + ", stateName=" + stateName + ", zipCode=" + zipCode + ", phoneNumber=" + phoneNumber
-				+ ", emailId=" + emailId + "]";
-	}
-
+        int option;
+        Map<String, List<ContactAddress>> addressBooks = new HashMap<String, List<ContactAddress>>();
+        do {
+            System.out.println("Enter 1 to Add AddressBook\nEnter 2 to Edit AddressBook\nEnter 3 to see All Address Books\n"
+                    +"Enter 0 to Exit");
+            option=s.nextInt();
+            switch(option) {
+                case 1:
+                    AddressBookOperations.addAddressBook(addressBooks);
+                    break;
+                case 2:
+                    AddressBookOperations.editAddressBook(addressBooks);
+                    break;
+                case 3:
+                    AddressBookOperations.displayAllAddressBook(addressBooks);
+                    break;
+                default:
+                    System.exit(0);
+                    break;
+            }
+        }while(option != 0);
+    }
 }
